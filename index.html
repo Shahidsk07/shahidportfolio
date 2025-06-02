@@ -921,24 +921,36 @@
             </div>
         </section>
 
-        <section id="contact" class="section glass">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-            </div>
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" class="form-input" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-input" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-textarea" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </section>
+       <!-- Replace the existing contact form section with this updated version -->
+<form class="contact-form">
+    <div class="form-group">
+        <input type="text" class="form-input" placeholder="Your Name" required>
     </div>
+    <div class="form-group">
+        <input type="email" class="form-input" placeholder="Your Email" required>
+    </div>
+    <div class="form-group">
+        <input type="tel" class="form-input" placeholder="Your Phone Number" required>
+    </div>
+    <div class="form-group">
+        <textarea class="form-textarea" placeholder="Your Message" required></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Send Message</button>
+</form>
+
+<!-- If you want to also display your contact information, add this before the form -->
+<div class="contact-info" style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap;">
+    <div class="contact-item" style="text-align: center; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
+        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📧</div>
+        <div style="font-weight: 600; color: var(--primary); margin-bottom: 0.5rem;">Email</div>
+        <div style="color: var(--gray-light);">shahid@example.com</div>
+    </div>
+    <div class="contact-item" style="text-align: center; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
+        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
+        <div style="font-weight: 600; color: var(--primary); margin-bottom: 0.5rem;">Phone</div>
+        <div style="color: var(--gray-light);">+92 XXX XXXXXXX</div>
+    </div>
+</div>
 
     <footer class="portfolio-footer">
         <p>&copy; 2025 Shahid Ullah. Designed with passion and modern web technologies.</p>
