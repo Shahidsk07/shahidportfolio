@@ -921,41 +921,35 @@
             </div>
         </section>
 
-       <!-- Replace the existing contact form section with this updated version -->
-<form class="contact-form">
-    <div class="form-group">
-        <input type="text" class="form-input" placeholder="Your Name" required>
+        <section id="contact" class="section glass">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-input" name="user_name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" name="user_email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-textarea" name="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
     </div>
-    <div class="form-group">
-        <input type="email" class="form-input" placeholder="Your Email" required>
-    </div>
-    <div class="form-group">
-        <input type="tel" class="form-input" placeholder="Your Phone Number" required>
-    </div>
-    <div class="form-group">
-        <textarea class="form-textarea" placeholder="Your Message" required></textarea>
-    </div>
-    <button type="submit" class="submit-btn">Send Message</button>
-</form>
-
-<!-- If you want to also display your contact information, add this before the form -->
-<div class="contact-info" style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap;">
-    <div class="contact-item" style="text-align: center; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
-        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📧</div>
-        <div style="font-weight: 600; color: var(--primary); margin-bottom: 0.5rem;">Email</div>
-        <div style="color: var(--gray-light);">shahid012004@gmail.com.</div>
-    </div>
-    <div class="contact-item" style="text-align: center; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
-        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
-        <div style="font-weight: 600; color: var(--primary); margin-bottom: 0.5rem;">Phone</div>
-        <div style="color: var(--gray-light);">+923028849077</div>
-    </div>
-</div>
 
     <footer class="portfolio-footer">
         <p>&copy; 2025 Shahid Ullah. Designed with passion and modern web technologies.</p>
     </footer>
 
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function(){
+        emailjs.init("St08ZUv1TqccTX7MQ"); // Replace with your EmailJS User ID
+      })();
+    </script>
     <script>
         // Scroll indicator
         window.addEventListener('scroll', () => {
@@ -991,26 +985,25 @@
         });
 
         // Enhanced form submission with better UX
-        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = e.target.querySelector('.submit-btn');
             const originalText = btn.textContent;
-            
-            // Show loading state
             btn.textContent = 'Sending...';
             btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            
-            // Simulate sending (replace with actual form submission logic)
-            setTimeout(() => {
-                btn.textContent = 'Message Sent!';
-                btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-                
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
-                    e.target.reset();
-                }, 2000);
-            }, 1500);
+            emailjs.sendForm('service_51aaznt', 'template_zww798a', this)
+                .then(function() {
+                    btn.textContent = 'Message Sent!';
+                    btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+                        e.target.reset();
+                    }, 2000);
+                }, function(error) {
+                    btn.textContent = 'Error!';
+                    btn.style.background = 'linear-gradient(135deg, #f97316, #ef4444)';
+                });
         });
 
         // Add parallax effect to floating elements
